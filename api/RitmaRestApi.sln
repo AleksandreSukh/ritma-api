@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinetTest", "ClinetTest\Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RitmaApiSharedModel", "SharedModel\RitmaApiSharedModel.csproj", "{B27E9445-A7E8-40A5-B6DF-24179B1B82FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiClient", "ApiClinetClient\RestApiClient.csproj", "{7F39403C-C039-43BD-82EE-C26C4EC501C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiClient", "ApiClient\RestApiClient.csproj", "{7F39403C-C039-43BD-82EE-C26C4EC501C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedTemplate", "SharedTemplate\SharedTemplate.csproj", "{94E841C7-B854-471E-A1A8-B877CE4E78B1}"
 EndProject
