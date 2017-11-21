@@ -290,3 +290,4 @@ __pycache__/
 /api/ApiManagerExTestSample/App.config
 /api/ErrorReportingRestApi_4_5/App.config
 /api/RitmaRestApi/AppSettings.config
+/api/RitmaRestApi/Connection.config

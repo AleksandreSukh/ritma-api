@@ -201,6 +201,7 @@
     <None Include="AppSettings.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Connection.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
