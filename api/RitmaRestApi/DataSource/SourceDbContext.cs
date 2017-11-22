@@ -1,16 +1,18 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
+using RestApiBase;
 using RitmaRestApi.Helpers;
 using RitmaRestApi.Models;
+using RitmaRestApi.Models.DataSourceModels;
 using SharedTemplate;
 using SQLite.CodeFirst;
 
 namespace RitmaRestApi.DataSource
 {
-    public class ReportsDbContextBase : IdentityDbContext<ApplicationUser>, IReportsDbContext
+    public class SourceDbContextBase : IdentityDbContext<ApplicationUser>, ISourceDbContext
     {
-        public ReportsDbContextBase(string connectionString) : base(connectionString)
+        public SourceDbContextBase(string connectionString) : base(connectionString)
         {
         }
 
@@ -31,48 +33,49 @@ namespace RitmaRestApi.DataSource
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
         }
 
-        public DbSet<RitmaResult> Reports { get; set; }
+        public DbSet<Word> Words { get; set; }
+        public DbSet<WordSimilarity> WordSimilarities { get; set; }
         public IQueryable<ApplicationUser> UsersQueriable => Users;
         public DbContext DbContext => this;
 
     }
 
-    public class ReportsDbContextMssql : ReportsDbContextBase
+    public class SourceDbContextMssql : SourceDbContextBase
     {
-        public ReportsDbContextMssql(string connectionString)
+        public SourceDbContextMssql(string connectionString)
             : base(connectionString) { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<ReportsDbContextMssql>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<SourceDbContextMssql>());
             base.OnModelCreating(modelBuilder);
         }
     }
-    public class ReportsDbContextPostgres : ReportsDbContextBase
+    public class SourceDbContextPostgres : SourceDbContextBase
     {
         //For migrations
-        public ReportsDbContextPostgres() : base(DependencyRepository.ConnectionStringName)
+        public SourceDbContextPostgres() : base(DependencyRepository.ConnectionStringName)
         {
         }
 
-        public ReportsDbContextPostgres(string connectionString)
+        public SourceDbContextPostgres(string connectionString)
             : base(connectionString) { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<ReportsDbContextPostgres>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<SourceDbContextPostgres>());
             base.OnModelCreating(modelBuilder);
         }
     }
 
-    public class ReportsDbContextSqlite : ReportsDbContextBase
+    public class SourceDbContextSqlite : SourceDbContextBase
     {
-        public ReportsDbContextSqlite(string connectionString)
+        public SourceDbContextSqlite(string connectionString)
             : base(connectionString) { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer(new SqliteCreateDatabaseIfNotExists<ReportsDbContextSqlite>(modelBuilder));
+            Database.SetInitializer(new SqliteCreateDatabaseIfNotExists<SourceDbContextSqlite>(modelBuilder));
             base.OnModelCreating(modelBuilder);
         }
     }

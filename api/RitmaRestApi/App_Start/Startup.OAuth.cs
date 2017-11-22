@@ -59,7 +59,7 @@ namespace RitmaRestApi
 
     static class Ext
     {
-        public static IReportsDbContext EnsureInitialDataExists(this IReportsDbContext context)
+        public static ISourceDbContext EnsureInitialDataExists(this ISourceDbContext context)
         {
 
 
@@ -104,7 +104,7 @@ namespace RitmaRestApi
         {
             logger.WriteLine($"Oauth token request: UserName:{context.UserName};Password:{context.Password};ClientId:{context.ClientId}");
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-            var owinContext = context.OwinContext.Get<IReportsDbContext>();
+            var owinContext = context.OwinContext.Get<ISourceDbContext>();
             var users = owinContext.UsersQueriable;
             var user = users.FirstOrDefault(u => u.UserName == context.UserName);
             if (!context.OwinContext.Get<ReportsUserManager>().CheckPassword(user, context.Password))

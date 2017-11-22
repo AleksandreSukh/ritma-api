@@ -53,6 +53,9 @@
     <Reference Include="EntityFramework6.Npgsql, Version=3.1.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework6.Npgsql.3.1.1\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
     </Reference>
+    <Reference Include="GeorgianLanguageClasses">
+      <HintPath>Lib\GeorgianLanguageClasses.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -171,24 +174,25 @@
     <Compile Include="Controllers\AudienceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyControllerBase.cs" />
-    <Compile Include="DataSource\IReportRepository.cs" />
-    <Compile Include="DataSource\IReportsDbContext.cs" />
-    <Compile Include="DataSource\ReportRepositoryFake.cs" />
-    <Compile Include="DataSource\ReportsDbContext.cs" />
-    <Compile Include="DataSource\ReportsDbContextExtensions.cs" />
+    <Compile Include="DataSource\IWordDataRepository.cs" />
+    <Compile Include="DataSource\ISourceDbContext.cs" />
+    <Compile Include="DataSource\SourceDbContext.cs" />
+    <Compile Include="DataSource\DbContexExtensions.cs" />
     <Compile Include="DataSource\SecureStringPassword.cs" />
     <Compile Include="Helpers\DependencyRepository.cs" />
     <Compile Include="Helpers\LogExecutionAttribute.cs" />
     <Compile Include="Models\Audiences\Audience.cs" />
     <Compile Include="Models\Audiences\AudienceModel.cs" />
     <Compile Include="Models\Audiences\AudiencesStore.cs" />
-    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\DataSourceModels\Word.cs" />
+    <Compile Include="Models\DataSourceModels\WordSimilarity.cs" />
+    <Compile Include="Models\ResultModels\RitmaResult.cs" />
     <Compile Include="Program.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\ReportsController.cs" />
-    <Compile Include="DataSource\ReportRepository.cs" />
+    <Compile Include="Controllers\RitmaController.cs" />
+    <Compile Include="DataSource\WordDataRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Adapters\ReportsUserStore.cs" />
     <Compile Include="WebApiConfig.cs" />
@@ -204,8 +208,14 @@
     <None Include="Connection.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Folder Include="Models\Generated\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RestApiBase\RestApiBase.csproj">
+      <Project>{4A1DBC32-06FD-4FAE-BDA9-A5CD0E49DA76}</Project>
+      <Name>RestApiBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharedModel\RitmaApiSharedModel.csproj">
       <Project>{b27e9445-a7e8-40a5-b6df-24179b1b82fe}</Project>
       <Name>RitmaApiSharedModel</Name>

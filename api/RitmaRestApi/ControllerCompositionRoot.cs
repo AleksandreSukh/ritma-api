@@ -37,8 +37,8 @@
 //        {
 //            if (serviceType == typeof(HomeController))
 //                return new HomeController();
-//            if (serviceType == typeof(ReportsController))
-//                return new ReportsController(DependencyRepository.Instance.ReportRepositoryProvider);
+//            if (serviceType == typeof(RitmaController))
+//                return new RitmaController(DependencyRepository.Instance.ReportRepositoryProvider);
 //            if (serviceType == typeof(AccountsController))
 //                return new AccountsController(DependencyRepository.Instance.ReportRepositoryProvider);
 //            return _defaultResolver.GetService(serviceType);

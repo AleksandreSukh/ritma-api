@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Newtonsoft.Json;
-using RitmaApiSharedModel;
 using SharedTemplate;
 
-namespace RitmaRestApi.Models
+namespace RestApiBase
 {
     public class RegistrationForm : IRegistrationForm
     {
@@ -18,22 +15,6 @@ namespace RitmaRestApi.Models
         public string Password { get; set; }
         public string RolesCommaSeparated { get; set; }
         public string Email { get; set; }
-    }
-
-    public class RitmaResult : LinkedResource, IRitmaResult,IUtcDated
-    {
-        [Key]
-        public long Id { get; set; }
-
-        public string[] ResultWords { get; set; }
-        public string RequestWord { get; set; }
-        public DateTime Date { get; set; }
-        public KeyValuePair<string, string>[] Meta { get; set; }
-
-        [JsonIgnore]
-        public virtual ApplicationUser User { get; set; }
-
-        public DateTime DateUtc { get; set; }
     }
 
     public interface IUtcDated
@@ -59,8 +40,7 @@ namespace RitmaRestApi.Models
     {
         //TODO:გვინდა?
         public string Comment { get; set; }
-        public virtual ICollection<RitmaResult> ToDoes { get; set; }
-
+     
         // FirstName & LastName will be stored in a different table called MyUserInfo
         public virtual MyUserInfo MyUserInfo { get; set; }
     }
@@ -76,10 +56,7 @@ namespace RitmaRestApi.Models
         public string Title { get; set; }
 
     }
-    public class LinkedReportCollection : LinkedResourceCollection<RitmaResult>
-    {
 
-    }
     public class AuthToken : IAuthToken
     {
         public string access_token { get; set; }

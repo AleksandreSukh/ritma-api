@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{553A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiManagerExTestSample", "ApiManagerExTestSample\ApiManagerExTestSample.csproj", "{C16769AB-E285-46CE-A196-241D1AD80A36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiBase", "RestApiBase\RestApiBase.csproj", "{4A1DBC32-06FD-4FAE-BDA9-A5CD0E49DA76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{C16769AB-E285-46CE-A196-241D1AD80A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C16769AB-E285-46CE-A196-241D1AD80A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C16769AB-E285-46CE-A196-241D1AD80A36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A1DBC32-06FD-4FAE-BDA9-A5CD0E49DA76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A1DBC32-06FD-4FAE-BDA9-A5CD0E49DA76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A1DBC32-06FD-4FAE-BDA9-A5CD0E49DA76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A1DBC32-06FD-4FAE-BDA9-A5CD0E49DA76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -77,23 +77,5 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ErrorReportingClient\RestApiClient.csproj">
-      <Project>{7F39403C-C039-43BD-82EE-C26C4EC501C9}</Project>
-      <Name>RestApiClient</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SharedModel\RitmaApiSharedModel.csproj">
-      <Project>{b27e9445-a7e8-40a5-b6df-24179b1b82fe}</Project>
-      <Name>ErrorReportingSharedModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SharedTemplate\SharedTemplate.csproj">
-      <Project>{94E841C7-B854-471E-A1A8-B877CE4E78B1}</Project>
-      <Name>SharedTemplate</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{3C3F7A71-84C6-4080-A7BA-31423D6BFAD9}</Project>
-      <Name>Utils</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

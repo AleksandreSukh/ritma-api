@@ -11,10 +11,10 @@ using WinServiceConsoleAppHybrid;
 namespace RitmaRestApi
 {
     [RunInstaller(true)]
-    public class ErrorReportingServiceInstaller : ProjectInstaller
+    public class NewServiceInstaller : ProjectInstaller
     {
-        public override string ServiceDisplayName { get; } = "ErrorReportingRestApi";
-        public override string ServiceServiceName { get; } = "ErrorReportingRestApi";
+        public override string ServiceDisplayName { get; } = DependencyRepository.ServiceName;
+        public override string ServiceServiceName { get; } = DependencyRepository.ServiceName;
     }
 
 

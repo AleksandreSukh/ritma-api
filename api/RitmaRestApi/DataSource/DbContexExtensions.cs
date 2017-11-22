@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using RestApiBase;
 using RitmaRestApi.Adapters;
 using RitmaRestApi.Models;
 

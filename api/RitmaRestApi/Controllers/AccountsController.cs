@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
+using RestApiBase;
 using RitmaRestApi.DataSource;
 using RitmaRestApi.Helpers;
 using RitmaRestApi.Models;
@@ -13,7 +14,7 @@ namespace RitmaRestApi.Controllers
     [RoutePrefix(WebApiConfig.ApiRoot + "/accounts")]
     public class AccountsController : MyControllerBase
     {
-        private Func<IReportRepository> _repoProvider = DependencyRepository.Instance.ReportRepositoryProvider;
+        private Func<IWordDataRepository> _repoProvider = DependencyRepository.Instance.ReportRepositoryProvider;
 
         [Authorize(Roles = RoleNames.Admin)]
         [AcceptVerbs(HttpVerbs.POST, HttpVerbs.PUT)]
