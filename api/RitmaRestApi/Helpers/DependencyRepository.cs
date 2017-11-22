@@ -8,15 +8,26 @@ using TextLoggerNet.Loggers;
 
 namespace RitmaRestApi.Helpers
 {
-    public class Configuration : DbMigrationsConfiguration<SourceDbContextPostgres>
+    public class Configuration : DbMigrationsConfiguration<SourceDbContextMssql>
     {
+        protected override void Seed(RitmaRestApi.DataSource.SourceDbContextMssql context)
+        {
+            //  This method will be called after migrating to the latest version.
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
+        }
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
             AutomaticMigrationDataLossAllowed = false;
         }
     }
-    public class Initializer : MigrateDatabaseToLatestVersion<SourceDbContextPostgres, Configuration>
+    public class Initializer : MigrateDatabaseToLatestVersion<SourceDbContextMssql, Configuration>
     {
     }
     public sealed class DependencyRepository

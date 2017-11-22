@@ -42,6 +42,10 @@ namespace RitmaRestApi.DataSource
 
     public class SourceDbContextMssql : SourceDbContextBase
     {
+        //For migrations
+        public SourceDbContextMssql() : base(DependencyRepository.ConnectionStringName)
+        {
+        }
         public SourceDbContextMssql(string connectionString)
             : base(connectionString) { }
 
