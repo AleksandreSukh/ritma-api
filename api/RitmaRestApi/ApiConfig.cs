@@ -2,6 +2,7 @@ namespace RitmaRestApi
 {
     public sealed class ApiConfig
     {
+        public readonly string AdminPassword;
         public readonly string BaseUrl;
         public readonly string Issuer;
         public readonly string Secret;
@@ -9,7 +10,7 @@ namespace RitmaRestApi
         public readonly bool AllowInsecureHttp;
         public readonly int AccessTokenExpireTimeMinutes;
 
-        public ApiConfig(string baseUrl, string issuer, string secret, string tokenEndpointPath, bool allowInsecureHttp, int accessTokenExpireTimeMinutes)
+        public ApiConfig(string baseUrl, string issuer, string secret, string tokenEndpointPath, bool allowInsecureHttp, int accessTokenExpireTimeMinutes, string adminPassword)
         {
             BaseUrl = baseUrl;
             Issuer = issuer;
@@ -17,6 +18,7 @@ namespace RitmaRestApi
             TokenEndpointPath = tokenEndpointPath;
             AllowInsecureHttp = allowInsecureHttp;
             AccessTokenExpireTimeMinutes = accessTokenExpireTimeMinutes;
+            AdminPassword = adminPassword;
         }
 
     }

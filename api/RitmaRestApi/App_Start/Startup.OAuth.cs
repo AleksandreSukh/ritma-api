@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using ConfigNet;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -77,7 +78,10 @@ namespace RitmaRestApi
                     //Console.WriteLine("Enter Password for admin account");
                     //var password = SecureStringPassword.GetPasswordCheckReenter(p => p.Length > 8).ToBasicString();
                     //throw new NotImplementedException();
-                    var password = "asddqwee1233";
+
+                    var config = ConfigReader.ReadFromSettings<ApiConfig>();
+
+                    var password = config.AdminPassword;
 
                     var usrCreationResult = context.DbContext.CreateUser(userName, roleName, email, password);
                     if (usrCreationResult.Succeeded)
