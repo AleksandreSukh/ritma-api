@@ -181,6 +181,11 @@
     <Compile Include="DataSource\SecureStringPassword.cs" />
     <Compile Include="Helpers\DependencyRepository.cs" />
     <Compile Include="Helpers\LogExecutionAttribute.cs" />
+    <Compile Include="Migrations\201711220834248_AddUsers.cs" />
+    <Compile Include="Migrations\201711220834248_AddUsers.Designer.cs">
+      <DependentUpon>201711220834248_AddUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Audiences\Audience.cs" />
     <Compile Include="Models\Audiences\AudienceModel.cs" />
     <Compile Include="Models\Audiences\AudiencesStore.cs" />
@@ -198,6 +203,9 @@
     <Compile Include="WebApiConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </None>
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -205,7 +213,10 @@
     <None Include="AppSettings.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Connection.config" />
+    <None Include="Connection.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Dockerfile" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +239,11 @@
       <Project>{FA419906-5F54-41A2-B881-A5430165D1ED}</Project>
       <Name>WinServiceConsoleAppHybrid</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711220834248_AddUsers.resx">
+      <DependentUpon>201711220834248_AddUsers.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
