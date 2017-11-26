@@ -291,3 +291,7 @@ __pycache__/
 /api/ErrorReportingRestApi_4_5/App.config
 /api/RitmaRestApi/AppSettings.config
 /api/RitmaRestApi/Connection.config
+/RitmaRestApi/AppSettings.config
+/ApiAdminClientTest/App.config
+/ApiManagerExTestSample/App.config
+/RitmaRestApi/Connection.config
