@@ -71,8 +71,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ErrorReportingClient\RestApiClient.csproj">
-      <Project>{7F39403C-C039-43BD-82EE-C26C4EC501C9}</Project>
+    <ProjectReference Include="..\ApiClient\RestApiClient.csproj">
+      <Project>{7f39403c-c039-43bd-82ee-c26c4ec501c9}</Project>
       <Name>RestApiClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharedTemplate\SharedTemplate.csproj">
