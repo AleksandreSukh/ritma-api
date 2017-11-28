@@ -8,12 +8,13 @@ using RitmaRestApi.Models.DataSourceModels;
 
 namespace RitmaRestApi.DataSource
 {
-    public interface IWordDataRepository :IDataRepository, IDisposable
+    public interface IWordDataRepository : IDataRepository, IDisposable
     {
-        IQueryable<Word> GetAllWords();
+        Dictionary<string, Word> GetAllWords();
         IQueryable<WordSimilarity> GetAllWordSimilarities();
-        void SaveNewWord(Word newWord);
-        void SaveNewSimilarity(WordSimilarity neWordSimilarity);
+        void AddNewWord(Word newWord);
         void AddSimilarities(IEnumerable<WordSimilarity> similaritiesForThatWord);
+        void RemoveSimilarities(Func<WordSimilarity, bool> predicate);
+        void Save();
     }
 }

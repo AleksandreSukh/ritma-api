@@ -19,7 +19,7 @@ namespace RitmaRestApi
         public void Configuration(IAppBuilder app)
         {
             var devMode = Debugger.IsAttached;
-            var apiConfig = ConfigReader.ReadFromSettings<ApiConfig>();
+            var apiConfig = DependencyRepository.Instance.ApiConfig;
 
             var contextProvider = DependencyRepository.Instance.ContextProvider;
 

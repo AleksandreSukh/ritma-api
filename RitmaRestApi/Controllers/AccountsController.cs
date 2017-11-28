@@ -44,7 +44,9 @@ namespace RitmaRestApi.Controllers
             using (var repo = _repoProvider.Invoke())
             {
                 var res = repo.CreateUser(userName, password, email, roleName);
-                return res.Succeeded ? (IHttpActionResult)Ok() : new StatusCodeResult(HttpStatusCode.ServiceUnavailable, this);
+                if (!res.Succeeded) return new StatusCodeResult(HttpStatusCode.ServiceUnavailable, this);
+                repo.Save();
+                return Ok();
             }
         }
 

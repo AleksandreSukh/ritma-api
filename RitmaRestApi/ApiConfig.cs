@@ -9,8 +9,9 @@ namespace RitmaRestApi
         public readonly string TokenEndpointPath;
         public readonly bool AllowInsecureHttp;
         public readonly int AccessTokenExpireTimeMinutes;
+        public readonly int EvalTopNSimiilarities;
 
-        public ApiConfig(string baseUrl, string issuer, string secret, string tokenEndpointPath, bool allowInsecureHttp, int accessTokenExpireTimeMinutes, string adminPassword)
+        public ApiConfig(string baseUrl, string issuer, string secret, string tokenEndpointPath, bool allowInsecureHttp, int accessTokenExpireTimeMinutes, string adminPassword, int evalTopNSimiilarities)
         {
             BaseUrl = baseUrl;
             Issuer = issuer;
@@ -19,6 +20,7 @@ namespace RitmaRestApi
             AllowInsecureHttp = allowInsecureHttp;
             AccessTokenExpireTimeMinutes = accessTokenExpireTimeMinutes;
             AdminPassword = adminPassword;
+            EvalTopNSimiilarities = evalTopNSimiilarities;
         }
 
     }

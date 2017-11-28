@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Diagnostics;
+using ConfigNet;
 using RitmaRestApi.DataSource;
 using TextLoggerNet.Interfaces;
 using TextLoggerNet.Loggers;
@@ -39,24 +40,26 @@ namespace RitmaRestApi.Helpers
         private static readonly Lazy<DependencyRepository> lazy =
             new Lazy<DependencyRepository>(() =>
             {
+                var apiConfig = ConfigReader.ReadFromSettings<ApiConfig>();
 
                 var defaultLogger = Debugger.IsAttached ? (ILogger)new ConsoleLoggerEasy() : new LoggerToFileDefaultEasy();
                 Func<ISourceDbContext> contextProvider = () => new SourceDbContextPostgres(ConnectionStringName);
                 Func<IWordDataRepository> reportRepositoryProvider = () => new WordDataRepository(contextProvider);
-                return new DependencyRepository(defaultLogger, reportRepositoryProvider, contextProvider);
+                return new DependencyRepository(defaultLogger, reportRepositoryProvider, contextProvider, apiConfig);
             });
 
         public static DependencyRepository Instance { get { return lazy.Value; } }
 
-        private DependencyRepository(ILogger logger, Func<IWordDataRepository> reportRepositoryProvider, Func<ISourceDbContext> contextProvider)
+        private DependencyRepository(ILogger logger, Func<IWordDataRepository> reportRepositoryProvider, Func<ISourceDbContext> contextProvider, ApiConfig apiConfig)
         {
             Logger = logger;
             ReportRepositoryProvider = reportRepositoryProvider;
             ContextProvider = contextProvider;
+            ApiConfig = apiConfig;
         }
         public Func<ISourceDbContext> ContextProvider { get; }
         public Func<IWordDataRepository> ReportRepositoryProvider { get; }
         public ILogger Logger { get; }
-
+        public ApiConfig ApiConfig { get; }
     }
 }

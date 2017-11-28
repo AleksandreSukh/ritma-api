@@ -21,63 +21,40 @@ namespace RitmaRestApi.DataSource
             this._context = context;
         }
 
+        #region Queries
+        public IQueryable<WordSimilarity> GetAllWordSimilarities() => _context.WordSimilarities.AsQueryable();
 
-        public IQueryable<WordSimilarity> GetAllWordSimilarities()
+        public ApplicationUser GetUser(string userName) => _context.UsersQueriable.FirstOrDefault(u => u.UserName.Equals(userName, StringComparison.InvariantCultureIgnoreCase));
+
+        public Dictionary<string, Word> GetAllWords()
         {
-            return _context.WordSimilarities.AsQueryable();
+            if (cachedWords == null)
+                cachedWords = _context.Words.ToDictionary(w => w.WordString, w => w);
+            return cachedWords;
         }
 
-        public void SaveNewWord(Word newWord)
-        {
-            //newWord.DateUtc = DateTime.UtcNow;
-            _context.Words.Add(newWord);
-            _context.SaveChanges();
-        }
-        public void SaveNewSimilarity(WordSimilarity newSimilarity)
-        {
-            //newWord.DateUtc = DateTime.UtcNow;
-            _context.WordSimilarities.Add(newSimilarity);
-            _context.SaveChanges();
-        }
+        private static Dictionary<string, Word> cachedWords = null;
 
-        public void AddSimilarities(IEnumerable<WordSimilarity> similaritiesForThatWord)
-        {
-            _context.WordSimilarities.AddRange(similaritiesForThatWord);
-            _context.SaveChanges();
-        }
+        #endregion
 
+        #region Commands
+        public void AddSimilarities(IEnumerable<WordSimilarity> similaritiesForThatWord) => _context.WordSimilarities.AddRange(similaritiesForThatWord);
 
-        public ApplicationUser GetUser(string userName)
-        {
-            return _context.UsersQueriable.FirstOrDefault(
-            u => u.UserName.Equals(userName, StringComparison.InvariantCultureIgnoreCase));
-        }
+        public void RemoveSimilarities(Func<WordSimilarity, bool> predicate) => _context.WordSimilarities.RemoveRange(_context.WordSimilarities.Where(predicate));
 
+        public void Save() => _context.SaveChanges();
 
-        public IdentityResult CreateUser(string userName, string password, string email, string roleName)
-        {
-            var res = _context.DbContext.CreateUser(
-                userName: userName,
-                password: password,
-                roleName: roleName,
-                email: email);
-            if (res.Succeeded)
-            {
-                _context.SaveChanges();
-                return IdentityResult.Success;
-            }
-            return res;
-        }
+        public void AddNewWord(Word newWord) => _context.Words.Add(newWord);
 
-        public IQueryable<Word> GetAllWords()
-        {
-            return _context.Words.AsQueryable();
-        }
+        public IdentityResult CreateUser(string userName, string password, string email, string roleName) => _context.DbContext.CreateUser(
+            userName: userName,
+            password: password,
+            roleName: roleName,
+            email: email);
 
-        public void Dispose()
-        {
-            _context?.Dispose();
-        }
+        public void Dispose() => _context?.Dispose();
+
+        #endregion
     }
 
 }

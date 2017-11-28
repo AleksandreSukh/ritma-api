@@ -169,7 +169,6 @@
     <Compile Include="Adapters\ReportsUserManager.cs" />
     <Compile Include="ApiConfig.cs" />
     <Compile Include="App_Start\Startup.OAuth.cs" />
-    <Compile Include="ControllerCompositionRoot.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\AudienceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -212,9 +211,11 @@
     <None Include="app.manifest" />
     <None Include="AppSettings.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Connection.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Dockerfile" />
     <None Include="packages.config" />

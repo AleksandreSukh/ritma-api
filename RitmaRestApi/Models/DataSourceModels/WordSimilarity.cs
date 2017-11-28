@@ -11,4 +11,10 @@ namespace RitmaRestApi.Models.DataSourceModels
         public int Word_Id1 { get; set; }
         public double Similarity { get; set; }
     }
+    public class WordSimilarityNonPersistent
+    {
+        public int Word_Id { get; set; }
+        public int Word_Id1 { get; set; }
+        public double Similarity { get; set; }
+    }
 }
