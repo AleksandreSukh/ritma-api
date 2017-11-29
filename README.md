@@ -1,2 +1,3 @@
 # ritma-api
-Rest API for Ritma application. Using ASP.NET Web Api Hosted in Windows service Using OWin
+Rest API for Ritma application. Using ASP.NET Web Api Hosted in Windows service Using OWin.
+Usage demo:http://ritma.club
