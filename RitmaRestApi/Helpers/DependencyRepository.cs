@@ -43,7 +43,7 @@ namespace RitmaRestApi.Helpers
                 var apiConfig = ConfigReader.ReadFromSettings<ApiConfig>();
 
                 var defaultLogger = Debugger.IsAttached ? (ILogger)new ConsoleLoggerEasy() : new LoggerToFileDefaultEasy();
-                Func<ISourceDbContext> contextProvider = () => new SourceDbContextPostgres(ConnectionStringName);
+                Func<ISourceDbContext> contextProvider = () => new SourceDbContextMssql(ConnectionStringName);
                 Func<IWordDataRepository> reportRepositoryProvider = () => new WordDataRepository(contextProvider);
                 return new DependencyRepository(defaultLogger, reportRepositoryProvider, contextProvider, apiConfig);
             });
